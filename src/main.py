@@ -16,7 +16,7 @@ _services.create_database()
 async def root():
     return {"message": "Hello Oxford Dictionaries"}
 
-@app.get("/urls/", response_model=List[_schemas.DictUrl])
+@app.get("/urls/", response_model=List[_schemas.Url])
 def read_urls(
     skip: int = 0,
     limit: int = 100,
@@ -34,13 +34,13 @@ def create_urls(urlInfo: _schemas.UrlInfoCreate, db: _orm.Session = _fastapi.Dep
     for key, value in raw_urls_oxford.items():
         word = key
         url = value
-        word_id=_const.oxfordlearnersdictionaries_key + "_"+word
-        db_url = _services.get_url_by_id(db=db, id=word_id)
+        url_id=_const.oxfordlearnersdictionaries_key + "_"+word
+        db_url = _services.get_url_by_id(db=db, id=url_id)
         if db_url:
             exits[word] = url
             continue
         token = str(nlp.vocab.strings[word])
-        _services.insert_url(db=db, word_id=word_id, word=word, url=url, token=token, from_website=_const.base_url)
+        _services.insert_url(db=db, url_id=url_id, word=word, url=url, token=token, from_website=_const.base_url)
     result["exits"] = exits
     result["input"] = raw_urls_oxford
     return result
