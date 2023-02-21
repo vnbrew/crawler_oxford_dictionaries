@@ -7,6 +7,7 @@ import services as _services, schemas as _schemas
 import scraper as _scraper
 import constant as _const
 import spacy as _spacy
+import argparse
 
 app = FastAPI()
 
@@ -45,4 +46,27 @@ def create_urls(urlInfo: _schemas.UrlInfoCreate, db: _orm.Session = _fastapi.Dep
     result["input"] = raw_urls_oxford
     return result
 
+
+def parse_args():
+    parser = argparse.ArgumentParser(prog='PROG')
+    parser.add_argument('filename')
+    return parser.parse_args()
+
+def do_url():
+    print("do url")
+    pass
+
+def do_word():
+    print("do word")
+    pass
+
+def main():
+    args = parse_args()
+    if(args.filename == "url"):
+        do_url()
+    if(args.filename == "word"):
+        do_word()
+
+if __name__ == '__main__':
+    main()
 

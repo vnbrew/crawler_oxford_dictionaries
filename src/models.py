@@ -13,14 +13,16 @@ class Url(_database.Base):
     error_message = _sql.Column(_sql.String, nullable=True, default="")
     from_website = _sql.Column(_sql.String, nullable=True, default="")
 
-    # words = _orm.relationship("Word", back_populates="owner")
+    words = _orm.relationship("Word", back_populates="owner")
 
 
-# class Word(_database.Base):
-#     __tablename__ = "words"
-#     id = _sql.Column(_sql.Integer, primary_key=True, index=True)
-#     title = _sql.Column(_sql.String, index=True)
-#     content = _sql.Column(_sql.String, index=True)
-#     owner_id = _sql.Column(_sql.Integer, _sql.ForeignKey("dict_urls.url_id"))
+class Word(_database.Base):
+    __tablename__ = "words"
+    id = _sql.Column(_sql.Integer, primary_key=True, index=True)
+    pron_br = _sql.Column(_sql.String, nullable=True, default="")
+    pron_br_audio = _sql.Column(_sql.String, nullable=True, default="")
+    pron_am = _sql.Column(_sql.String, nullable=True, default="")
+    pron_am_audio = _sql.Column(_sql.String, nullable=True, default="")
+    owner_id = _sql.Column(_sql.Integer, _sql.ForeignKey("urls.url_id"))
 
-#     owner = _orm.relationship("Url", back_populates="words")
+    owner = _orm.relationship("Url", back_populates="words")
