@@ -17,3 +17,9 @@ python -m spacy download en_core_web_md
 cd src
 uvicorn main:app --reload
 ```
+
+
+# Api docs
+```sh
+http://127.0.0.1:8000/docs
+```

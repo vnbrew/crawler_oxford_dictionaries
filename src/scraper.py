@@ -21,7 +21,7 @@ def get_all_word_url_from_oxford(url: str) -> Dict:
         word = url.a.get_text()
         url = urljoin(define.base_url, url.a["href"])
         if(word == "mission" and url == "https://www.oxfordlearnersdictionaries.com/definition/english/impossible" ):
-            url = "https://www.oxfordlearnersdictionaries.com/definition/english/" + word
+            url = "https://www.oxfordlearnersdictionaries.com/definition/english/mission"
         if(word == "more" and url == "https://www.oxfordlearnersdictionaries.com/definition/english/many" ):
             url = "https://www.oxfordlearnersdictionaries.com/definition/english/more_1"
         if(word == "most" and url == "https://www.oxfordlearnersdictionaries.com/definition/english/many" ):
