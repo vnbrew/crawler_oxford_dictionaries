@@ -34,13 +34,13 @@ def create_urls(urlInfo: _schemas.UrlInfoCreate, db: _orm.Session = _fastapi.Dep
     for key, value in raw_urls_oxford.items():
         word = key
         url = value
-        url_id=_const.oxfordlearnersdictionaries_key + "_"+word
-        db_url = _services.get_url_by_id(db=db, id=url_id)
+        word_id=_const.oxfordlearnersdictionaries_key + "_"+word
+        db_url = _services.get_url_by_id(db=db, id=word_id)
         if db_url:
             exits[word] = url
             continue
         token = str(nlp.vocab.strings[word])
-        _services.insert_url(db=db, url_id=url_id, word=word, url=url, token=token, from_website=_const.base_url)
+        _services.insert_url(db=db, word_id=word_id, word=word, url=url, token=token, from_website=_const.base_url)
     result["exits"] = exits
     result["input"] = raw_urls_oxford
     return result

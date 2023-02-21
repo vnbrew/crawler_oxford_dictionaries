@@ -13,7 +13,7 @@ class DictUrlCreate(_pydantic.BaseModel):
 
 class DictUrl(_pydantic.BaseModel):
     id: int
-    url_id: str
+    word_id: str
     token: str
     word: str
     url: str

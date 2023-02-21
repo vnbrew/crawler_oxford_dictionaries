@@ -5,7 +5,7 @@ import sqlalchemy.orm as _orm
 class DictUrl(_database.Base):
     __tablename__ = "dict_urls"
     id = _sql.Column(_sql.Integer, primary_key=True, index=True)
-    url_id = _sql.Column(_sql.String, unique=True, index=True)
+    word_id = _sql.Column(_sql.String, unique=True, index=True)
     word = _sql.Column(_sql.String, index=True)
     url = _sql.Column(_sql.String, unique=True, index=True)
     token = _sql.Column(_sql.String, index=True)
