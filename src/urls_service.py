@@ -7,6 +7,3 @@ def get_all_urls() -> Dict:
         data = _json.load(urls_file)
 
     return data["urls"]
-
-
-# print(get_all_urls())

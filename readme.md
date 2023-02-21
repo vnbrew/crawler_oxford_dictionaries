@@ -6,6 +6,10 @@ cd crawler_oxford_dictionaries
 python3 -m venv .env
 source .env/bin/activate
 pip3 install -r requirements.txt
+pip3 install -U pip setuptools wheel
+pip3 install -U spacy
+python -m spacy download en_core_web_sm
+python -m spacy download en_core_web_md
 ```
 
 # Run api

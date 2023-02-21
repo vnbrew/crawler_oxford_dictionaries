@@ -4,7 +4,7 @@ import json as _json
 
 def create_urls_dict():
     urls = dict()
-    urls["urls"] = _scraper.url_of_all_word(define.oxfordlearnersdictionaries_url)
+    urls["urls"] = _scraper.get_all_word_url_from_oxford(define.oxfordlearnersdictionaries_url)
     return urls
 
 if __name__ == "__main__":
